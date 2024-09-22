@@ -68,4 +68,14 @@ jobs:
         run: |
           semgrep login
           semgrep install-semgrep-pro
-          semgrep ci --pro --sarif --sarif-output=https://github.com/emersonXavier/IWA-Java.git
+          semgrep ci --pro --sarif --sarif-output=results.sarif
+
+      # Upload Semgrep results to GitHub Issues
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          # Path to SARIF file relative to the root of the repository
+          sarif_file: results.sarif
+          # Optional category for the results
+          # Used to differentiate multiple results for one commit
+          category: Semgrep
