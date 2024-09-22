@@ -63,6 +63,7 @@ jobs:
 
       # Perform Semgrep SAST + SCA scan and import results into GitHub Code scanning alerts
       - name: Run Semgrep Scan
+        env: ${{ secrets.SEMGREP_APP_TOKEN }}
         run: |
           semgrep login
           semgrep install-semgrep-pro
