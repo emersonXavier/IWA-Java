@@ -36,7 +36,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9", "3.10", "3.11"]
+        python-version: ["3.11"] #["3.9", "3.10", "3.11"]
 
     steps:
       # Check out source code
@@ -68,4 +68,4 @@ jobs:
         run: |
           semgrep login
           semgrep install-semgrep-pro
-          semgrep ci --pro
+          semgrep ci --pro --sarif --sarif-output=https://github.com/emersonXavier/IWA-Java.git
