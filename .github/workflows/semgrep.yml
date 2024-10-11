@@ -49,9 +49,8 @@ jobs:
         with:
           java-version: 11
           distribution: 'temurin'
-        run: |
-          mvn clean package
-          mvn dependency:tree -DoutputFile=maven_dep_tree.txt
+      - run: |
+          mvn clean package dependency:tree -DoutputFile=maven_dep_tree.txt
 
       # Python is required to run Semgrep utilities. Ensuring proper version is installed on the runner.
       - name: Set up Python ${{ matrix.python-version }}
